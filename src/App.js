@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import Movie from './component/Movie';
+import Home from './routes/home';
+import {HashRouter, Route} from 'react-router-dom';
+import About from './routes/About';
+import Nav from './component/Nav';
+import Detail from './routes/Detail';
 
-function App() {
+
+
+
+function App(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Nav />
+      <Route path='/home'>
+        <h1>home</h1>
+      </Route>
+      <Route path='/' component={Home} exact={true}></Route>
+      <Route path='/about' component={About}></Route>
+      <Route path='/Detail' component={Detail}></Route>
+    </HashRouter>
   );
 }
+
+
 
 export default App;
